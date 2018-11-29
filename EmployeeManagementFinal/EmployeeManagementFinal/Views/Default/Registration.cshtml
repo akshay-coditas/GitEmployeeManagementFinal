@@ -1,0 +1,111 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/Style.css")   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>    
+    @Scripts.Render("~/Scripts/RegistrationForm.js")
+
+
+</head>
+<body>    
+    @if (@ViewBag.count > 0) {
+    <div id="popUp" class="pop-up"><div id="close">X</div><h2>Registration Successful</h2></div>
+     }
+    @using (Html.BeginForm("Registration", "Default", FormMethod.Post))
+    {
+        <fieldset class="registration-form-box">
+            <legend class="registration-form-box-legend">Registration</legend>
+            <div>
+                <div class="label-input-group ">
+                    <label>First Name</label>
+                    <div>
+                        <input id="firstName" name="FirstName" type="text" placeholder="Enter First Name">
+                    </div>
+                </div>
+
+                <div class="label-input-group ">
+                    <label>Last Name</label>
+                    <div>
+                        <input id="lastName" name="LastName" type="text" placeholder="Enter Last Name">
+                    </div>
+                </div>
+
+                <div class="label-input-group ">
+                    <label>Date Of Birth</label>
+                    <div>
+                        <input id="dateOfBirth" name="DateOfBirth" type="date">
+                    </div>
+                </div>
+
+                <div class="label-input-group ">
+                    <label>Email</label>
+                    <div>
+                        <input id="emailAddress" name="EmailId" type="text" placeholder="Enter Email">
+                    </div>
+                </div>
+
+                <div class="label-input-group ">
+                    <label>Mobile Number</label>
+                    <div>
+                        <input id="phoneNumber" name="PhoneNumber" type="text" placeholder="Enter Phone Number">
+                    </div>
+                </div>
+
+                <div class="label-input-group ">
+                    <label>Address</label>
+                    <div>
+                        <textarea id="textAreaAddress" name="UserAddress" rows="6" cols="40"></textarea>
+                    </div>
+                </div>
+
+                <div class="label-input-group ">
+                    <label>Gender</label>
+                    <div>
+                        <input id="radioBtnGenderMale" type="radio" name="Gender" value="male">Male
+                        <input id="radioBtnGenderFemale" type="radio" name="Gender" value="female">Female
+                        <input id="radioBtnGenderOther" type="radio" name="Gender" value="other">Other
+                        <div class="error-message">
+                            <span id="errorspan"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="label-input-group ">
+                    <label>User Name</label>
+                    <div>
+                        <input type="text" id="loginId" placeholder="Enter UserId" name="UserId" />
+                    </div>
+                </div>
+
+                <div class="label-input-group ">
+                    <label>Password</label>
+                    <div>
+                        <input type="password" id="loginPassWord" placeholder="Enter Password" name="UserPassword" />
+                    </div>
+                </div>
+
+                <div class="label-input-group ">
+                    <label>Confirm-Password</label>
+                    <div>
+                        <input type="password" id="loginConfirmPassword" placeholder="Re-Enter Password" name="ConfirmPassword" />
+                    </div>
+                </div>
+
+                <div>
+                    <input class="for-button" id="btnsubmit" type="submit" value="Submit">
+                    <input class="for-button" type="Reset" value="Reset">
+                    <a href="http://localhost/EmployeeManagementFinal/Default/Login"><input type="button" id="redirectToLoginButton" value="Login" /></a>
+                </div>
+            </div>
+        </fieldset>
+    }
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    @Styles.Render("~/Content/Style.css")
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    @*<link rel="stylesheet" href="@Url.Content("~/Scripts/LoginPage.js")" />*@
+    @Scripts.Render("~/Scripts/RegistrationForm.js")
+</head>
+<body>
+    @using (Html.BeginForm("Login", "Default", FormMethod.Post))
+    {
+        <fieldset class="login-form-box">
+            <legend class="login-form-box-legend">LogIn</legend>
+            <div class="label-username-group">
+                <div>
+                    @Html.Label("userName", "UserName")
+                </div>
+                <div>
+                    @Html.TextBox("UserId")
+                </div>
+            </div>
+            <div class="label-username-group">
+                <div>
+                    @Html.Label("passWord", "PassWord")
+                </div>
+                <div>
+                    @Html.Password("UserPassword")
+                </div>
+            </div>
+            <br />
+            <br />
+            <div>
+                <input type="submit" id="btnLogin" value="Login" />
+                <input type="reset" value="Reset" name="reset" />
+                <a href="http://localhost:64001/Default/Registration"><input type="button" id="redirectToLoginButton" value="Register" /></a>
+            </div>
+        </fieldset>   
+    
+    }
+</body>
+</html>

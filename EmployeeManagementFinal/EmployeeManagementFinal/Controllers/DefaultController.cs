@@ -8,6 +8,10 @@ namespace EmployeeManagementFinal.Controllers
 {
     public class DefaultController : Controller
     {
+        /// <summary>
+        /// Test stash
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             return View();
@@ -60,6 +64,13 @@ namespace EmployeeManagementFinal.Controllers
             return View();
         }
 
+        /// <summary>
+        /// This method is used for Login Creds verification
+        /// </summary>
+        /// <param name="codita"></param>
+        /// <param name="UserId"></param>
+        /// <param name="UserPassword"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Login(Codita codita, string UserId, string UserPassword)
         {

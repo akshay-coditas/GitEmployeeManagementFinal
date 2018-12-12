@@ -3,15 +3,16 @@ using System.Linq;
 using System.Web.Mvc;
 using EmployeeManagementFinal.Models;
 using EmployeeManagementFinal.Common;
+using Kendo.Mvc.UI;
+using Kendo.Mvc.Extensions;
+using System.Collections.Generic;
+using System.Web.Script.Serialization;
 
 namespace EmployeeManagementFinal.Controllers
 {
     public class DefaultController : Controller
     {
-        /// <summary>
-        /// Test stash
-        /// </summary>
-        /// <returns></returns>
+        Codita cd = new Codita();
         public ActionResult Index()
         {
             return View();
@@ -64,13 +65,6 @@ namespace EmployeeManagementFinal.Controllers
             return View();
         }
 
-        /// <summary>
-        /// This method is used for Login Creds verification
-        /// </summary>
-        /// <param name="codita"></param>
-        /// <param name="UserId"></param>
-        /// <param name="UserPassword"></param>
-        /// <returns></returns>
         [HttpPost]
         public ActionResult Login(Codita codita, string UserId, string UserPassword)
         {
@@ -84,6 +78,24 @@ namespace EmployeeManagementFinal.Controllers
                 return View("DashBord");
             }
             return View();
-        }        
+        }
+        [HttpGet]
+        public ActionResult DemoFinal()
+        {
+            EmployeeDBEntities db = new EmployeeDBEntities();
+            var database = db.Coditas; 
+            return View(database);
+        }
+        [HttpPost]
+        public ActionResult DemoFinal(string employeeName)
+        {            
+            string trimmedEmployeename = employeeName.Trim();
+            int indexofspace = trimmedEmployeename.IndexOf(" ", 0);
+            string lastName = trimmedEmployeename.Substring(indexofspace+1);
+            string firstName = trimmedEmployeename.Substring(0, indexofspace);
+            EmployeeDBEntities db = new EmployeeDBEntities();
+            var database = from i in db.Coditas where i.FirstName == firstName && i.LastName==lastName select i;
+            return View(database);
+        }
     }
 }

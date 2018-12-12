@@ -23,5 +23,7 @@ namespace EmployeeManagementFinal.Models
         public string Gender { get; set; }
         public string UserId { get; set; }
         public string UserPassword { get; set; }
+        public string ImageUrl { get; set; }
+
     }
 }

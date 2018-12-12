@@ -7,7 +7,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Login</title>
-    @Styles.Render("~/Content/Style.css")
+    @Styles.Render("~/Content/CssStyle.css")
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
     </script>
     @*<link rel="stylesheet" href="@Url.Content("~/Scripts/LoginPage.js")" />*@
@@ -39,10 +39,9 @@
             <div>
                 <input type="submit" id="btnLogin" value="Login" />
                 <input type="reset" value="Reset" name="reset" />
-                <a href="http://localhost:64001/Default/Registration"><input type="button" id="redirectToLoginButton" value="Register" /></a>
+                <a href="http://localhost/EmployeeManagementFinal/Default/Registration"><input type="button" id="redirectToLoginButton" value="Register" /></a>
             </div>
-        </fieldset>   
-    
+        </fieldset>    
     }
 </body>
 </html>

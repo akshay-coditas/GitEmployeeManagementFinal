@@ -7,17 +7,25 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    @Styles.Render("~/Content/Style.css")   
+    @Styles.Render("~/Content/CssStyle.css")
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
-    </script>    
-    @Scripts.Render("~/Scripts/RegistrationForm.js")
-
+    </script>
+    @Scripts.Render("~/Scripts/RegistrationForm.js")   
 
 </head>
-<body>    
-    @if (@ViewBag.count > 0) {
-    <div id="popUp" class="pop-up"><div id="close">X</div><h2>Registration Successful</h2></div>
-     }
+<body>
+
+    @if (@ViewBag.count > 0)
+    {
+        <script>
+            $(document).ready(function () {
+                $("#popUp").slideDown(3000);
+                $("#popUp").slideUp(3000);
+            });
+        </script>
+        <div id="popUp" class="pop-up"><h2>Registration Successful</h2></div>
+    }
+
     @using (Html.BeginForm("Registration", "Default", FormMethod.Post))
     {
         <fieldset class="registration-form-box">
@@ -106,6 +114,5 @@
             </div>
         </fieldset>
     }
-
 </body>
 </html>

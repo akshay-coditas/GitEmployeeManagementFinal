@@ -1,0 +1,55 @@
+﻿@model List<EmployeeManagementFinal.Models.Codita>
+@{
+    ViewBag.Title = "Demo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<html>
+<head>
+    <!--<span class="code-comment"> Add CSS reference --></span>
+    <link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" />
+
+    <!--<span class="code-comment"> CSS reference for theme; you can make custom them from http://demos.kendoui.com/themebuilder/web.html --></span>
+    <link href="~/Content/kendo/kendo.metro.min.css" rel="stylesheet" />
+
+    <!--<span class="code-comment"> Add JS Script reference --></span>
+    <script src="~/Scripts/jquery-1.8.3.min.js"></script>
+    <script src="~/Scripts/kendo/kendo.web.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <script>
+        $(document).ready(function () {
+        @(Html.Kendo().Grid<EmployeeManagementFinal.Models.Codita>()
+        .Name("grid")
+        .Columns(columns =>
+        {
+            columns.Bound(c => c.FirstName);
+            columns.Bound(c => c.LastName);
+            columns.Bound(c => c.PhoneNumber);
+
+        })
+        .HtmlAttributes(new { style = "height: 550px;" })
+        .Scrollable()
+        .Groupable()
+        .Sortable()
+        .Pageable(pageable => pageable
+        .Refresh(true)
+        .PageSizes(true)
+        .ButtonCount(5))
+        .DataSource(dataSource => dataSource
+        .Ajax()
+        .Read(read => read.Action("Demo", "Default"))
+        .PageSize(20)
+        )
+    )
+            });
+    </script>
+</head>
+    <body>
+    <div id="KendoGrid"></div>
+    
+    </body>
+    
+</html>

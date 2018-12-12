@@ -1,0 +1,62 @@
+﻿@model IEnumerable<EmployeeManagementFinal.Models.Codita>
+@using System.Web.Mvc;
+@using Kendo.Mvc.UI;
+@using Kendo.Mvc.Extensions;
+@{
+    ViewBag.Title = "DemoFinal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/Content/kendo/kendo.default.min.css" />
+    <link rel="stylesheet" href="~/Content/kendo/kendo.default.mobile.min.css" />
+    <script src="~/Scripts/kendo/jquery.min.js"></script>
+    <script src="~/Scripts/kendo/kendo.all.min.js"></script>
+    <link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/kendo.metro.min.css" rel="stylesheet" />
+    <script src="~/Scripts/kendo/jquery-1.8.3.min.js"></script>
+    <script src="~/Scripts/kendo/kendo.web.min.js"></script>    
+</head>
+<body>
+    <br />
+    <br />
+    @using (Html.BeginForm("DemoFinal", "Default", FormMethod.Post))
+     {
+        @Html.TextBox("employeeName")
+        <input type="submit" name="Search" value="Search" id="btnSubmit" />
+     }
+    <br />
+    @(Html.Kendo()
+        .Grid(Model)
+            .Name("Grid")
+            .Columns(columns =>
+            {
+                columns.Bound(p => p.FirstName)
+                    .HeaderHtmlAttributes(new { style = "background-color:burlywood " });
+                columns.Bound(p => p.LastName)
+                    .HeaderHtmlAttributes(new { style = "background-color:burlywood " });
+                columns.Bound(p => p.DateOfBirth)
+                    .HeaderHtmlAttributes(new { style = "background-color:burlywood " })
+                    .Format("{0: MM-dd-yyyy }");
+                columns.Bound(p => p.EmailId)
+                    .HeaderHtmlAttributes(new { style = "background-color:burlywood " });
+                columns.Bound(p => p.PhoneNumber)
+                    .HeaderHtmlAttributes(new { style = "background-color:burlywood " });
+                columns.Bound(p => p.UserAddress)
+                    .HeaderHtmlAttributes(new { style = "background-color:burlywood " });
+                columns.Bound(p => p.Gender)
+                    .Template(@<text>  @if (item.Gender == "female"){
+                                       <img src="@Url.Content("~/Content/Customer/female.png")" alt="Fenale Icon" style="display:block;margin-left:auto; width:50px; height:50px; margin-right:auto;" />
+                                        }
+                                       else {
+                                       <img src="@Url.Content("~/Content/Customer/malefinal.jpg")" alt="Male Icon" style="display:block;margin-left:auto; width:50px; height:50px; margin-right:auto;" />
+                                       }
+                              </text>)
+                    .HeaderHtmlAttributes(new { style = "background-color:burlywood" });
+            })            
+            .Pageable()
+            .Sortable()            
+    )
+</body>
+</html>
